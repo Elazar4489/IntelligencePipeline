@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("IntelligencePipeline")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9d53afcb1bd0cdf25424752ddc93e75f9cd8bc94")]
 [assembly: System.Reflection.AssemblyProductAttribute("IntelligencePipeline")]
 [assembly: System.Reflection.AssemblyTitleAttribute("IntelligencePipeline")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
