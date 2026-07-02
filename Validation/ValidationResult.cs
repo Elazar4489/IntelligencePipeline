@@ -11,8 +11,14 @@ namespace IntelligencePipeline.Validation
             IsValid = isValid;
             ErrorMessage = errorMessage;
         }
-        public static ValidationResult Success() { }//?
-        public static ValidationResult Failure(string errorMessage) { }//?
+        public static ValidationResult Success()
+        {
+            return new ValidationResult(true, "");
+        }
+        public static ValidationResult Failure(string errorMessage) 
+        {
+            return new ValidationResult(false, errorMessage);
+        }//?
 
     }
 }
