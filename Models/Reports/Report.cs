@@ -22,7 +22,7 @@ namespace IntelligencePipeline.Models.Reports
             Latitude = latitude;
             Longitude = longitude;
             Description = description;
-            Status = new ReportStatus();//?
+            Status = ReportStatus.New;
             Priority = new Priority();//?
             Classification = new Classification();//?
             ReliabilityScore = new int();//?
