@@ -7,22 +7,48 @@ namespace IntelligencePipeline.Calculators
     {
         public Priority Calculate(Report report)
         {
-            """
-                        Implements priority rules:
-            - Critical: missile/explosion/attack/fire keywords, Radar Speed >= 800, Signal with target
-            AND attack
-            - High: weapon/suspicious/border keywords, Drone Altitude < 500, Radar Speed >= 400,
-            Soldier ConfidenceLevel >= 4 with movement
-            - Medium: movement/vehicle/activity keywords, Radar Speed >= 120, ReliabilityScore >=
-            7
-            - Low: default
-            """
+            Priority priority = new Priority();
+            if (ContainsKeyword(report.Description, "missile","explosion","attack","fire")||
+            (report is RadarReport radar && radar.Speed >= 800) ||
+            (report is SignalReport signal && ContainsKeyword(signal.Content, "target", "missile", "explosion", "attack", "fire")))
+            {
+                priority = Priority.Critical;
+            }
+            else if (ContainsKeyword(report.Description, "weapon", "suspicious", "border") ||
+                (report is DroneReport drone && drone.Altitude < 500)||
+                (report is RadarReport radar1 && radar1.Speed >= 400)||
+                (report is SoldierReport soldier && soldier.ConfidenceLevel >=4 && ContainsKeyword(soldier.Description, "movement"))
+                )
+            {
+                priority = Priority.High;
+            }
+            else if (ContainsKeyword(report.Description, "movement", "vehicle", "activity")||
+                (report is RadarReport radar2 && radar2.Speed >= 120)||
+                (report.ReliabilityScore >= 7)
+                )
+            {
+                priority = Priority.Medium;
+            }
+            else
+            {
+                priority = Priority.Low;
+            }
+            return priority;
         }
         private bool ContainsKeyword(string text, params string[] keywords)
         {
-            //"""
-            //Case-insensitive keyword search.
-            //"""
+            if (string.IsNullOrEmpty(text))
+            {
+                return false;
+            }
+            foreach (string keyword in keywords)
+            {
+                if (text.Contains(keyword, StringComparison.OrdinalIgnoreCase))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
