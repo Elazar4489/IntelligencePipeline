@@ -4,7 +4,7 @@ namespace IntelligencePipeline.Models.Reports
 {
     abstract class Report
     {
-        public int ReportId { get; protected set; }
+        public int ReportId { get; set; }//?
         public DateTime Timestamp { get; protected set; }
         public double Latitude { get; protected set; }
         public double Longitude { get; protected set; }

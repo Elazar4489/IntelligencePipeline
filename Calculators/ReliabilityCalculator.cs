@@ -6,9 +6,10 @@ namespace IntelligencePipeline.Calculators
     {
         public int Calculate(Report report)
         {
-            """
-            Calls report.CalculateReliabilityScore() and ensures result is 1–10.
-            """
+
+            report.CalculateReliabilityScore();
+                and ensures result is 1–10.
+            
         }
     }
 }

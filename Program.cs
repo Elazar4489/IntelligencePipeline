@@ -11,6 +11,7 @@ namespace IntelligencePipeline
     {
         public static void Main()
         {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
             ReportPipeline reportPipeline = new ReportPipeline();
             bool flag = true;
             while (flag)
