@@ -1,6 +1,6 @@
 namespace IntelligencePipeline.Models.Reports
 {
-    public class DroneReport : Report
+    class DroneReport : Report
     {
         public int Altitude { get; protected set; }
         public int ImageQuality { get; protected set; }

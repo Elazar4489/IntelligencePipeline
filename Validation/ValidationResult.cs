@@ -18,7 +18,7 @@ namespace IntelligencePipeline.Validation
         public static ValidationResult Failure(string errorMessage) 
         {
             return new ValidationResult(false, errorMessage);
-        }//?
+        }
 
     }
 }

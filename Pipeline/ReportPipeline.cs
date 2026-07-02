@@ -69,9 +69,9 @@ namespace IntelligencePipeline.Pipeline
             PriorityCalculator priority = new PriorityCalculator();
             ReliabilityCalculator reliability = new ReliabilityCalculator();
             ClassificationCalculator classification = new ClassificationCalculator();
-            priority.Calculate(report);
-            reliability.Calculate(report);
-            classification.Calculate(report);
+            report.Priority = priority.Calculate(report);
+            report.ReliabilityScore = reliability.Calculate(report);
+            report.Classification = classification.Calculate(report);
         }
         private void StoreReport(Report report)
         {
