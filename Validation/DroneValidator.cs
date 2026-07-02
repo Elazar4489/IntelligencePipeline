@@ -6,13 +6,21 @@ namespace IntelligencePipeline.Validation
     {
         protected override ValidationResult ValidateSpecificFields(Report report)
         {
-//        Validates:
-//            -Report is DroneReport type
-//            - Altitude: 100–10000
-//            - ImageQuality: 1–100
-//Note: Common fields(Timestamp, Latitude, Longitude, Description) are validated by
-//BaseValidator.ValidateCommonFields()
-
+            string message = "";
+            if (report is DroneReport droneReport)
+            {
+                if (droneReport.Altitude >= 100 && droneReport.Altitude <= 10000)
+                {
+                    if (droneReport.ImageQuality >= 1 && droneReport.ImageQuality <= 100)
+                    {
+                        return ValidationResult.Success();
+                    }
+                    else { message = "ERROR: ImageQuality must be between 1–100"; }
+                }
+                else { message = "ERROR: Altitude must be between 100–10000"; }
+            }
+            else { message = "ERROR: Report is not DroneReport type"; }
+            return ValidationResult.Failure(message);
         }
     }
   

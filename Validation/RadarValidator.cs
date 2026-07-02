@@ -6,14 +6,26 @@ namespace IntelligencePipeline.Validation
     {
         protected override ValidationResult ValidateSpecificFields(Report report)
         {
-            """
-                        Validates:
-            - Report is RadarReport type
-            - Speed: 0–2000
-            - Direction: 0–360
-            - Distance: 100–100000
-            Note: Common fields are validated by BaseValidator.ValidateCommonFields()
-            """
+            string message = "";
+            if (report is RadarReport radarReport)
+            {
+                if (radarReport.Speed >= 0 && radarReport.Speed <= 2000)
+                {
+                    if (radarReport.Direction >= 0 && radarReport.Direction <= 360)
+                    {
+                        if (radarReport.Distance>= 100 && radarReport.Distance <= 100000)
+                        {
+                            return ValidationResult.Success();
+                        }
+                        else { message = "ERROR: Distance must be between 100–100000"; }
+                    }
+                    else { message = "ERROR: Direction must be between 0–360"; }
+                }
+                else { message = "ERROR: Speed must be between 0–2000"; }
+            }
+            else { message = "ERROR: Report is not RadarReport type"; }
+            return ValidationResult.Failure(message);
+            
         }
     }
 }

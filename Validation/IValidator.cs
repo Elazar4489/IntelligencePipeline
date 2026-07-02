@@ -55,10 +55,8 @@ namespace IntelligencePipeline.Validation
             //Returns ValidationResult.Failure(message) if any validation fails, otherwise
             //ValidationResult.Success().
         }
-        protected abstract ValidationResult ValidateSpecificFields(Report report)
-        {
-            //Abstract method that derived validators must implement to validate type-specific fields.
-        }
+        protected abstract ValidationResult ValidateSpecificFields(Report report);
+        
     }
 
 }
